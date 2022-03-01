@@ -19,7 +19,7 @@ def data_cleaning(weatherHistory):
     
     # Add timestamp difference
     weatherHistory['Timestamp'] = weatherHistory['Formatted Date'].apply(lambda x: datetime.datetime.strptime(x[:-10],'%Y-%m-%d %H:%M:%S').timestamp())
-    weatherHistory['Timestamp diff to next'] = weatherHistory['Timestamp'].diff().shift(-1)
+    weatherHistory['Timestamp diff to next'] = weatherHistory['Timestamp'].diff().shift(-1).ffill()
     
     # remove non-factors
     non_factor_cols = [
