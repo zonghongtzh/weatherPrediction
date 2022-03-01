@@ -48,6 +48,14 @@ def convert_object_to_int(weatherHistory):
         weatherHistory[non_float_col] = weatherHistory[non_float_col].apply(lambda x: mapping[x])
     
     return weatherHistory
+
+def normalize_data(df):
+    # change all columns to have data between 1 and 0
+    # (x - min(x))/(max(x) - min(x))
+    numerator = df - df.min(axis = 0)
+    denominator = df.max(axis = 0) - df.min(axis = 0)
+    norm_df = numerator.div(denominator, axis = 1)
+    return norm_df
     
 
 if __name__ == "__main__":
@@ -57,6 +65,7 @@ if __name__ == "__main__":
     
     weatherHistory = data_cleaning(weatherHistory)
     weatherHistory = convert_object_to_int(weatherHistory)
+    weatherHistory = normalize_data(weatherHistory)
     
     save_path = os.path.join(utils.mypath, 'Storage', 'weatherHistory_cleaned.csv')
     weatherHistory.to_csv(save_path)
