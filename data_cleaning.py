@@ -23,8 +23,9 @@ def data_cleaning(weatherHistory):
     
     # remove non-factors
     non_factor_cols = [
-        'Formatted Date',
-        'Daily Summary'
+        'Formatted Date', 
+        'Daily Summary', # summarized with Summary column
+        'Timestamp' # scales too linearly with normalization, strongly skewing results
     ]
     factor_cols = [col for col in weatherHistory.columns if col not in non_factor_cols]
     weatherHistory = weatherHistory[factor_cols]
@@ -34,6 +35,7 @@ def data_cleaning(weatherHistory):
 
 def convert_object_to_int(weatherHistory):
     # find columns containing non-floats
+    # could rank the Summary column manually, but it all seems to be about rainy weathers
     data_types = weatherHistory.dtypes
     non_float_cols = data_types[data_types != float].index.tolist() 
     
