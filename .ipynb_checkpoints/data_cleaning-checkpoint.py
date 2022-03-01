@@ -2,9 +2,8 @@
 from utils import * 
 
 def data_cleaning(weatherHistory):
-    
     '''
-    If timestamp to next is uncommonly long, the data should not be selected by KNN algorithm
+    If timestamp to next is uncommonly long, the data should not be selected by algorithm
     e.g. 
     |Loud Cover | Pressure (millibars)| Daily Summary| Timestamp | Timestamp diff to next|
     |L1         | P1                  | DS1          | T1        | 3600                  |
@@ -32,8 +31,8 @@ def data_cleaning(weatherHistory):
     
     return weatherHistory
 
+
 def convert_object_to_int(weatherHistory):
-    
     # find columns containing non-floats
     data_types = weatherHistory.dtypes
     non_float_cols = data_types[data_types != float].index.tolist() 
