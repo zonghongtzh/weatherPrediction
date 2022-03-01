@@ -66,6 +66,7 @@ if __name__ == "__main__":
     weatherHistory = data_cleaning(weatherHistory)
     weatherHistory = convert_object_to_int(weatherHistory)
     weatherHistory = normalize_data(weatherHistory)
+    weatherHistory = weatherHistory.fillna(0)
     
     save_path = os.path.join(utils.mypath, 'Storage', 'weatherHistory_cleaned.csv')
     weatherHistory.to_csv(save_path)
