@@ -5,9 +5,14 @@ Sequence of execution:
     - maps last 100 datapoints from weatherHistory_cleaned to their "predicted" subsequent weather pattern
     - stored in Results/last_100.json
    
-2. last_100_analysis.py
-    - conducts analysis on predicted results of RED algorithm mapping
+# Monte carlo analysis required to tell whether result is statistically significant
+2. monte_carlo_randomization.py
+    - conducted randomized mapping 
+    - allows for checking of error in a "randomized" scenario (error determined by euclidean distance from "random prediction" to "actual" results)
+    - mean and standard deviation of said error will enable us to determine if RED algorithm's error is statistically significantly low enough
+    
+3. last_100_analysis.py
+    - conducts analysis on predicted results of RED algorithm mapping for last_100 data
     - calculates euclidean distance from "predicted" to "actual" 
     - calculates mean error and standard deviation of error
-    
-# Monte carlo analysis required to tell whether result is statistically significant
+    - compared to monte-carlo simulation's result to determine statistical significance
