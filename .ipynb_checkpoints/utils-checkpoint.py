@@ -43,6 +43,5 @@ class Utils:
         flat_list = [item for sublist in main_list for item in sublist]
         return flat_list
     
-        
 mypath = os.path.dirname(os.path.abspath(__file__))
 utils = Utils(mypath)
