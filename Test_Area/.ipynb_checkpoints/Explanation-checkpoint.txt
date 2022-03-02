@@ -1,0 +1,13 @@
+This folder consists of a trial run and analysis of the RED algorithm
+
+Sequence of execution: 
+1. run_last_100.py 
+    - maps last 100 datapoints from weatherHistory_cleaned to their "predicted" subsequent weather pattern
+    - stored in Results/last_100.json
+   
+2. last_100_analysis.py
+    - conducts analysis on predicted results of RED algorithm mapping
+    - calculates euclidean distance from "predicted" to "actual" 
+    - calculates mean error and standard deviation of error
+    
+# Monte carlo analysis required to tell whether result is statistically significant
